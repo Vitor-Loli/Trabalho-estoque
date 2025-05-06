@@ -1,0 +1,3 @@
+C:/Users/vitor.cagliari/Trabalhos Faculdade C/Trabalho estoque/cmake-build-debug/CMakeFiles/Trabalho_estoque.dir
+C:/Users/vitor.cagliari/Trabalhos Faculdade C/Trabalho estoque/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/vitor.cagliari/Trabalhos Faculdade C/Trabalho estoque/cmake-build-debug/CMakeFiles/rebuild_cache.dir
