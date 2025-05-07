@@ -24,20 +24,18 @@ void listar_clientes(){
 }
 
 void excluir_cliente(){
-    int i = -1;
     char nome[50];
     printf("Qual cliente deseja excluir?\n");
     scanf("%s", &nome);
 
-    do{
-            i++;
-    }while(strcmp(Clientes[i], nome) != 0);
-
-    if(i == 0){
-        printf("Cliente não encontrado, por favor informe outro\n");
-    }else{
-        strcpy(Clientes[i], "");
+    for (int i = 0; i < 10; i++) {
+        if (strcmp(Clientes[i], nome) == 0) {
+            strcpy(Clientes[i], "");
+            printf("Cliente excluído com sucesso \n");
+            break;
+        }
     }
+
 
 }
 
