@@ -34,6 +34,10 @@ void excluir_cliente(){
             printf("Cliente excluído com sucesso \n");
             break;
         }
+
+        if (strcmp(Clientes[i], nome) != 0 && i == 9) {
+            printf("Cliente não encontrado na base de clientes!\n");
+        }
     }
 
 
