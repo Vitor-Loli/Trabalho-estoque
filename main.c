@@ -9,8 +9,12 @@ typedef struct cliente {
 } cliente;
 struct cliente Clientes[10];
 
-
-char Produtos[10][50];
+typedef struct produto {
+    char descricao[50];
+    double preco;
+    double quantidade;
+} produto;
+struct produto Produtos[10];
 
 void insere_cliente(){
     int opc;
@@ -91,6 +95,37 @@ void excluir_cliente(){
 
 }
 
+void insere_produto(){
+    int opc;
+    for(int i = 0; i < 10; i++){
+        if(strlen(Produtos[i].descricao) == 0){
+            printf("Informe a descrição do produto: \n");
+            scanf("%s", Produtos[i].descricao);
+            printf("Informe o preço unitário do produto: Ex: 12.50\n");
+            scanf("%lf", &Produtos[i].preco);
+            printf("Informe a quantidade do produto:\n");
+            scanf("%lf", &Produtos[i].quantidade);
+            break;
+        }
+    }
+
+    printf("Deseja inserir outro produto?\n");
+    printf("1. Sim\n");
+    printf("2. Não\n");
+    scanf("%d", &opc);
+
+    if (opc == 1) {
+        insere_produto();
+    }
+}
+
+void listar_produtos(){
+    for(int i = 0; i < 10; i++){
+        if(strlen(Produtos[i].descricao) > 0 ){
+            printf("%s - R$%.2lf - %.2lf\n", Produtos[i].descricao, Produtos[i].preco, Produtos[i].quantidade);
+        }
+    }
+}
 
 int main()
 {
@@ -118,6 +153,14 @@ int main()
         case 3:
             excluir_cliente();
         break;
+         case 4:
+             insere_produto();
+             break;
+         case 5:
+             listar_produtos();
+             break;
+         case 6:
+             break;
         case 8:
             printf("Até logo!");
         break;
