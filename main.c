@@ -74,6 +74,8 @@ void excluir_cliente(){
                 break;
             }
         }
+    } else {
+        excluir_cliente();
     }
 
     if (i == 10) {
