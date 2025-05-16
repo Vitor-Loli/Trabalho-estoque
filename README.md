@@ -2,7 +2,7 @@
 
 ## Sistema de Controle de Estoque
 
-Este projeto é um sistema básico de controle de estoque, desenvolvido como parte do Trabalho 1 da disciplina de Laboratório de Programação.
+Este projeto é um sistema básico de controle de estoque, desenvolvido como parte do Trabalho da disciplina de Laboratório de Programação.
 
 ### Funcionalidades Implementadas
 
