@@ -97,6 +97,10 @@ void excluir_cliente(){
 
 }
 
+void atualizar_cliente() {
+
+}
+
 void insere_produto(){
     int opc;
     for(int i = 0; i < 10; i++){
@@ -156,7 +160,7 @@ int main()
             excluir_cliente();
         break;
          case 4:
-             insere_produto();
+             atualizar_cliente();
              break;
          case 5:
              listar_produtos();
