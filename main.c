@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+int qtd_cientes_cadastrados = 0;
+int qtd_produtos_cadastrados = 0;
 
 typedef struct cliente {
+    int id;
     char nome[50];
     char cpf[12];
 } cliente;
@@ -38,6 +41,20 @@ int buscar_cliente(char nome[50], char cpf[12] , int opc) {
     return i;
 }
 
+int buscar_produto(char descricao[50]) {
+    int i = 0;
+
+        while (strcmp(Produtos[i].descricao, descricao) != 0 ) {
+            i++;
+            if (i > 9) {
+                break;
+            }
+        }
+
+    return i;
+}
+
+
 void insere_cliente(){
     int opc;
     for(int i = 0; i < 10; i++){
@@ -49,6 +66,7 @@ void insere_cliente(){
             break;
         }
     }
+    qtd_cientes_cadastrados++;
 
     printf("Deseja inserir outro cliente?\n");
     printf("1. Sim\n");
@@ -61,6 +79,12 @@ void insere_cliente(){
 }
 
 void listar_clientes(){
+
+    if (qtd_cientes_cadastrados == 0) {
+        printf("Não existem clientes cadastrados! Cadastre um primeiro!\n");
+        return;
+    }
+
     for(int i = 0; i < 10; i++){
         if(strlen(Clientes[i].nome) > 0 && strlen(Clientes[i].cpf) > 0){
             printf("%s - %s\n", Clientes[i].nome, Clientes[i].cpf);
@@ -69,6 +93,12 @@ void listar_clientes(){
 }
 
 void excluir_cliente(){
+
+    if (qtd_cientes_cadastrados == 0) {
+        printf("Não existem clientes cadastrados! Cadastre um primeiro!\n");
+        return;
+    }
+    
     char nome[50];
     char cpf[12];
     int i = 0;
@@ -95,8 +125,10 @@ void excluir_cliente(){
     }else {
         strcpy(Clientes[i].nome, "");
         strcpy(Clientes[i].cpf, "");
-        printf("Cliente excluido com sucesso!\n");
+        printf("Cliente excluído com sucesso!\n");
     }
+
+    qtd_cientes_cadastrados--;
 
     printf("Deseja excluir outro cliente?\n");
     printf("1. Sim\n");
@@ -174,6 +206,8 @@ void insere_produto(){
         }
     }
 
+    qtd_produtos_cadastrados++;
+
     printf("Deseja inserir outro produto?\n");
     printf("1. Sim\n");
     printf("2. Não\n");
@@ -185,11 +219,53 @@ void insere_produto(){
 }
 
 void listar_produtos(){
+
+    if (qtd_produtos_cadastrados == 0) {
+        printf("Não existem produtos cadastrados! Cadastre um primeiro!\n");
+        return;
+    }
+
     for(int i = 0; i < 10; i++){
         if(strlen(Produtos[i].descricao) > 0 ){
             printf("%s - R$%.2lf - %.2lf\n", Produtos[i].descricao, Produtos[i].preco, Produtos[i].quantidade);
         }
     }
+}
+
+void excluir_produto() {
+    if (qtd_produtos_cadastrados == 0) {
+        printf("Não existem produtos cadastrados! Cadastre um primeiro!\n");
+        return;
+    }
+
+    char descricao[50];
+    int i = 0;
+    int opc;
+    printf("Informe a descrição do produto que deseja excluir:\n");
+    scanf("%s", &descricao);
+    i = buscar_produto(descricao);
+
+    if (i == 10) {
+        printf("Produto não encontrado! Por favor informe outro:\n");
+        excluir_produto();
+    }else {
+        strcpy(Produtos[i].descricao, "");
+        Produtos[i].preco = 0;
+        Produtos[i].quantidade = 0;
+        printf("Produto excluído com sucesso!\n");
+    }
+
+    qtd_produtos_cadastrados--;
+
+    printf("Deseja excluir outro cliente?\n");
+    printf("1. Sim\n");
+    printf("2. Não\n");
+    scanf("%d", &opc);
+
+    if (opc == 1) {
+        excluir_cliente();
+    }
+
 }
 
 int main()
@@ -227,6 +303,9 @@ int main()
              break;
          case 6:
              listar_produtos();
+             break;
+         case 7:
+             excluir_produto();
              break;
         case 8:
             printf("Até logo!");
