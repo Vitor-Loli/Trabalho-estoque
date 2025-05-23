@@ -3,16 +3,17 @@
 int qtd_produtos_cadastrados = 0;
 
 typedef struct produto {
+    int id;
     char descricao[50];
     double preco;
     double quantidade;
 } produto;
 struct produto Produtos[10];
 
-int buscar_produto(char descricao[50]) {
+int buscar_produto(int id) {
     int i = 0;
 
-    while (strcmp(Produtos[i].descricao, descricao) != 0 ) {
+    while (Produtos[i].id != id) {
         i++;
         if (i > 9) {
             break;
@@ -26,6 +27,7 @@ void insere_produto(){
     int opc;
     for(int i = 0; i < 10; i++){
         if(strlen(Produtos[i].descricao) == 0){
+            Produtos[i].id = i + 1;
             printf("Informe a descrição do produto: \n");
             scanf("%s", Produtos[i].descricao);
             printf("Informe o preço unitário do produto: Ex: 12.50\n");
@@ -57,7 +59,7 @@ void listar_produtos(){
 
     for(int i = 0; i < 10; i++){
         if(strlen(Produtos[i].descricao) > 0 ){
-            printf("%s - R$%.2lf - %.2lf\n", Produtos[i].descricao, Produtos[i].preco, Produtos[i].quantidade);
+            printf("%d - %s - R$%.2lf - %.2lf\n", Produtos[i].id, Produtos[i].descricao, Produtos[i].preco, Produtos[i].quantidade);
         }
     }
 }
@@ -68,12 +70,14 @@ void excluir_produto() {
         return;
     }
 
-    char descricao[50];
     int i = 0;
     int opc;
-    printf("Informe a descrição do produto que deseja excluir:\n");
-    scanf("%s", &descricao);
-    i = buscar_produto(descricao);
+    int id;
+    printf("Esses são os produtos cadastrados, qual deseja excluir?:\n");
+    listar_produtos();
+    printf("Informe o ID: \n");
+    scanf("%d", &id);
+    i = buscar_produto(id);
 
     if (i == 10) {
         printf("Produto não encontrado! Por favor informe outro:\n");
@@ -93,7 +97,7 @@ void excluir_produto() {
     scanf("%d", &opc);
 
     if (opc == 1) {
-        excluir_cliente();
+        excluir_produto();
     }
 
 }
@@ -105,12 +109,13 @@ void atualizar_produto() {
         return;
     }
 
-    char descricao[50];
     int i;
-    printf("Esses são os produtos cadastrados no sistema, qual deseja alterar? Informe a descrição:\n");
+    int id;
+    printf("Esses são os produtos cadastrados no sistema, qual deseja alterar?\n");
     listar_produtos();
-    scanf("%s", &descricao);
-    i = buscar_produto(descricao);
+    printf("Informe o ID: \n");
+    scanf("%d", &id);
+    i = buscar_produto(id);
 
     if (i == 10) {
         printf("Produto não encontrado! Por favor informe outro: \n");

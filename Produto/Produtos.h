@@ -8,7 +8,7 @@
 #include <string.h>
 
 void insere_produto();
-int buscar_produti(char descricao[50]);
+int buscar_produti(int id);
 void listar_produtos();
 void excluir_produto();
 void atualizar_produto();

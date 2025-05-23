@@ -8,7 +8,7 @@
 #include <string.h>
 
 void insere_cliente();
-int buscar_cliente(char nome[50], char cpf[12] , int opc);
+int buscar_cliente(int id);
 void listar_clientes();
 void excluir_cliente();
 void atualizar_cliente();

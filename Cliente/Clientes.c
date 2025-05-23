@@ -14,6 +14,7 @@ void insere_cliente(){
     int opc;
     for(int i = 0; i < 10; i++){
         if(strlen(Clientes[i].nome) == 0 && strlen(Clientes[i].cpf) == 0){
+            Clientes[i].id = i + 1;
             printf("Informe o nome do cliente: \n");
             scanf("%s", Clientes[i].nome);
             printf("Informe o cpf do cliente: EX: 12345678911\n");
@@ -33,25 +34,15 @@ void insere_cliente(){
     }
 }
 
-int buscar_cliente(char nome[50], char cpf[12] , int opc) {
+int buscar_cliente(int id) {
     int i = 0;
 
-    if (opc == 1) {
-        while (strcmp(Clientes[i].nome, nome) != 0 ) {
+        while (Clientes[i].id != id ) {
             i++;
             if (i > 9) {
                 break;
             }
         }
-    }else if (opc == 2) {
-        while (strcmp(Clientes[i].cpf, cpf) != 0 ) {
-            i++;
-            if (i > 9) {
-                break;
-            }
-        }
-    }
-
     return i;
 }
 
@@ -65,7 +56,7 @@ void listar_clientes(){
 
     for(int i = 0; i < 10; i++){
         if(strlen(Clientes[i].nome) > 0 && strlen(Clientes[i].cpf) > 0){
-            printf("%s - %s\n", Clientes[i].nome, Clientes[i].cpf);
+            printf("%d - %s - %s\n", Clientes[i].id, Clientes[i].nome, Clientes[i].cpf);
         }
     }
 }
@@ -77,30 +68,20 @@ void excluir_cliente(){
         return;
     }
 
-    char nome[50];
-    char cpf[12];
     int i = 0;
     int opc;
-    printf("Como deseja buscar o cliente que irá excluir?\n");
-    printf("1. Nome\n");
-    printf("2. CPF\n");
-    scanf("%d", &opc);
+    int id;
+    printf("Esses são os clientes cadastrados, qual deseja excluir?\n");
+    listar_clientes();
+    printf("Informe o ID: \n");
+    scanf("%d", &id);
 
-    if (opc == 1) {
-        printf("Informe o nome do cliente: \n");
-        scanf("%s", &nome);
-        i = buscar_cliente(nome, cpf, opc);
-    }else if (opc == 2) {
-        printf("Informe o cpf do cliente: EX: 12345678911\n");
-        scanf("%s", &cpf);
-        i = buscar_cliente(nome, cpf, opc);
-    } else {
-        excluir_cliente();
-    }
+    i = buscar_cliente(id);
 
     if (i == 10) {
         printf("Cliente não encontrado!\n");
     }else {
+        Clientes[i].id = 0;
         strcpy(Clientes[i].nome, "");
         strcpy(Clientes[i].cpf, "");
         printf("Cliente excluído com sucesso!\n");
@@ -126,13 +107,13 @@ void atualizar_cliente() {
         return;
     }
 
-    char nome[50];
-    char cpf[12];
-    int i;
-    printf("Esses são os clientes cadastrados no sistema, qual deseja alterar? Informe o nome\n");
+    int i = 0;
+    int id;
+    printf("Esses são os clientes cadastrados, qual deseja alterar?\n");
     listar_clientes();
-    scanf("%s", &nome);
-    i = buscar_cliente(nome, cpf, 1);
+    printf("Informe o ID: \n");
+    scanf("%d", &id);
+    i = buscar_cliente(id);
 
     if (i == 10) {
         printf("Cliente não encontrado, informe outro");
