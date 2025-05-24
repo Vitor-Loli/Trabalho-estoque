@@ -1,14 +1,6 @@
 #include "Produtos.h"
 
-int qtd_produtos_cadastrados = 0;
 
-typedef struct produto {
-    int id;
-    char descricao[50];
-    double preco;
-    double quantidade;
-} produto;
-struct produto Produtos[10];
 
 int buscar_produto(int id) {
     int i = 0;
