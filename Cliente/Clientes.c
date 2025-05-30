@@ -1,7 +1,5 @@
 #include "Clientes.h"
 
-
-
 void insere_cliente(){
     int opc;
     for(int i = 0; i < 10; i++){

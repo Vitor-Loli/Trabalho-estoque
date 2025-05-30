@@ -1,7 +1,5 @@
 #include "Produtos.h"
 
-
-
 int buscar_produto(int id) {
     int i = 0;
 

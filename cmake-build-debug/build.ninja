@@ -67,6 +67,12 @@ build CMakeFiles/Trabalho_estoque.dir/Produto/Produtos.c.obj: C_COMPILER__Trabal
   OBJECT_DIR = CMakeFiles\Trabalho_estoque.dir
   OBJECT_FILE_DIR = CMakeFiles\Trabalho_estoque.dir\Produto
 
+build CMakeFiles/Trabalho_estoque.dir/Venda/Vendas.c.obj: C_COMPILER__Trabalho_estoque_unscanned_Debug C$:/Users/vitor.cagliari/Trabalhos$ Faculdade$ C/Trabalho$ estoque/Venda/Vendas.c || cmake_object_order_depends_target_Trabalho_estoque
+  DEP_FILE = CMakeFiles\Trabalho_estoque.dir\Venda\Vendas.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Trabalho_estoque.dir
+  OBJECT_FILE_DIR = CMakeFiles\Trabalho_estoque.dir\Venda
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Trabalho_estoque
@@ -75,7 +81,7 @@ build CMakeFiles/Trabalho_estoque.dir/Produto/Produtos.c.obj: C_COMPILER__Trabal
 #############################################
 # Link the executable Trabalho_estoque.exe
 
-build Trabalho_estoque.exe: C_EXECUTABLE_LINKER__Trabalho_estoque_Debug CMakeFiles/Trabalho_estoque.dir/main.c.obj CMakeFiles/Trabalho_estoque.dir/Cliente/Clientes.c.obj CMakeFiles/Trabalho_estoque.dir/Produto/Produtos.c.obj
+build Trabalho_estoque.exe: C_EXECUTABLE_LINKER__Trabalho_estoque_Debug CMakeFiles/Trabalho_estoque.dir/main.c.obj CMakeFiles/Trabalho_estoque.dir/Cliente/Clientes.c.obj CMakeFiles/Trabalho_estoque.dir/Produto/Produtos.c.obj CMakeFiles/Trabalho_estoque.dir/Venda/Vendas.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Trabalho_estoque.dir
