@@ -1,5 +1,9 @@
 #include "Clientes.h"
 
+
+cliente Clientes[10];
+int qtd_cientes_cadastrados = 0;
+
 void insere_cliente(){
     int opc;
     for(int i = 0; i < 10; i++){

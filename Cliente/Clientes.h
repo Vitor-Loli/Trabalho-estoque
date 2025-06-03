@@ -7,15 +7,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct cliente {
     int id;
     char nome[50];
     char cpf[12];
 } cliente;
-struct cliente Clientes[10];
-
-int qtd_cientes_cadastrados = 0;
+extern cliente Clientes[10];
+extern int qtd_cientes_cadastrados;
 
 void insere_cliente();
 int buscar_cliente(int id);

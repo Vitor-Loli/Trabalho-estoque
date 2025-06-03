@@ -1,5 +1,8 @@
 #include "Produtos.h"
 
+int qtd_produtos_cadastrados = 0;
+produto Produtos[10];
+
 int buscar_produto(int id) {
     int i = 0;
 

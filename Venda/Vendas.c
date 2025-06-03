@@ -41,15 +41,29 @@ void efetuar_venda() {
             scanf("%d", &qtd_produtos_venda);
             printf("Esses são os produtos cadastrados\n");
             listar_produtos();
-                int c = 0;
-                while (c < qtd_produtos_venda) {
-                    printf("Informe o id do %dº produto: \n", c + 1);
-                    scanf("%d", &Vendas[i].Produtos_venda[c].id_produto);
-                    printf("Informe a quantidade comprada do produto");
-                    scanf("%d", &Vendas[i].Produtos_venda[c].quantidade);
-                }
+            int c = 0;
+            while (c < qtd_produtos_venda) {
+                printf("Informe o id do %dº produto: \n", c + 1);
+                scanf("%d", &Vendas[i].Produtos_venda[c].id_produto);
+                printf("Informe a quantidade comprada do produto");
+                scanf("%d", &Vendas[i].Produtos_venda[c].quantidade);
+                c++;
+            }
             break;
         }
     }
-    
-};
+}
+
+void listar_vendas(){
+    for (int i = 0; i < 100; i++) {
+        if(Vendas[i].id != 0){
+            printf("%d - %d\n", Vendas[i].id, Vendas[i].id_cliente);
+            printf("Produtos do cliente:\n");
+            for (int c = 0; c < 10; c++) {
+                if (Vendas[i].Produtos_venda[c].id_produto != 0) {
+                    printf("    %d - %d\n", Vendas[i].Produtos_venda[c].id_produto,Vendas[i].Produtos_venda[c].quantidade);
+                }
+            }
+        }
+    }
+}

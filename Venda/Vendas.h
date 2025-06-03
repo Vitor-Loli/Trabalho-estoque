@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 void efetuar_venda();
+void listar_vendas();
 
 #endif //VENDAS_H

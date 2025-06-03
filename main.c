@@ -3,7 +3,7 @@
 #include <string.h>
 #include "Cliente/Clientes.h"
 #include "Produto/Produtos.h"
-
+#include "Venda/Vendas.h"
 
 
 int main()
@@ -22,6 +22,8 @@ int main()
        printf("6. Listar Produto\n");
        printf("7. Excluir Produto\n");
        printf("8. Alterar Produto\n");
+       printf("Vendas\n");
+       printf("9. Efetuar Venda\n");
        scanf("%d", &opc);
 
      switch(opc){
@@ -49,13 +51,19 @@ int main()
          case 8:
              atualizar_produto();
              break;
-        case 9:
-            printf("Até logo!");
-        break;
+         case 9:
+             efetuar_venda();
+             break;
+        case 10:
+            listar_vendas();
+            break;
+         case 11:
+             printf("Até logo!");
+             break;
 
         default:
             printf("Valor incorreto! Por favor informe outro");
      }
 
-   }while(opc != 9);
+   }while(opc != 11);
 }
