@@ -4,11 +4,13 @@
 cliente Clientes[10];
 int qtd_cientes_cadastrados = 0;
 
+int id_cliente = 0;
+
 void insere_cliente(){
     int opc;
     for(int i = 0; i < 10; i++){
         if(strlen(Clientes[i].nome) == 0 && strlen(Clientes[i].cpf) == 0){
-            Clientes[i].id = i + 1;
+            Clientes[i].id = id_cliente + 1;
             printf("Informe o nome do cliente: \n");
             scanf("%s", Clientes[i].nome);
             printf("Informe o cpf do cliente: EX: 12345678911\n");
@@ -17,6 +19,7 @@ void insere_cliente(){
         }
     }
     qtd_cientes_cadastrados++;
+    id_cliente++;
 
     printf("Deseja inserir outro cliente?\n");
     printf("1. Sim\n");

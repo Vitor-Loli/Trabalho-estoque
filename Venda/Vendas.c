@@ -33,7 +33,7 @@ void efetuar_venda() {
 
     for(int i = 0; i < 10; i++){
         if(Vendas[i].id == 0){
-            Vendas[i].id = i + 1;
+            Vendas[i].id = id_venda + 1;
             printf("Informe o id do cliente: \n");
             listar_clientes();
             scanf("%d", &Vendas[i].id_cliente);
@@ -45,13 +45,15 @@ void efetuar_venda() {
             while (c < qtd_produtos_venda) {
                 printf("Informe o id do %dº produto: \n", c + 1);
                 scanf("%d", &Vendas[i].Produtos_venda[c].id_produto);
-                printf("Informe a quantidade comprada do produto");
+                printf("Informe a quantidade comprada do produto\n");
                 scanf("%d", &Vendas[i].Produtos_venda[c].quantidade);
                 c++;
             }
             break;
         }
     }
+
+    id_venda++;
 }
 
 void listar_vendas(){

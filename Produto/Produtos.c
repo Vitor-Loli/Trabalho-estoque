@@ -3,6 +3,8 @@
 int qtd_produtos_cadastrados = 0;
 produto Produtos[10];
 
+int id_produto = 0;
+
 int buscar_produto(int id) {
     int i = 0;
 
@@ -20,7 +22,7 @@ void insere_produto(){
     int opc;
     for(int i = 0; i < 10; i++){
         if(strlen(Produtos[i].descricao) == 0){
-            Produtos[i].id = i + 1;
+            Produtos[i].id = id_produto + 1;
             printf("Informe a descrição do produto: \n");
             scanf("%s", Produtos[i].descricao);
             printf("Informe o preço unitário do produto: Ex: 12.50\n");
@@ -32,6 +34,7 @@ void insere_produto(){
     }
 
     qtd_produtos_cadastrados++;
+    id_produto++;
 
     printf("Deseja inserir outro produto?\n");
     printf("1. Sim\n");
