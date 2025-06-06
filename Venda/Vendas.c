@@ -20,6 +20,8 @@ int id_venda = 0;
 
 void efetuar_venda() {
     int id_cliente_venda;
+    int id_produto_venda;
+    int resposta;
     int qtd_produtos_venda;
 
     if (qtd_cientes_cadastrados == 0 ) {
@@ -34,22 +36,36 @@ void efetuar_venda() {
     for(int i = 0; i < 10; i++){
         if(Vendas[i].id == 0){
             Vendas[i].id = id_venda + 1;
-            printf("Informe o id do cliente: \n");
-            listar_clientes();
-            scanf("%d", &Vendas[i].id_cliente);
+            bool flag = true;
+            do {
+                printf("Informe o id do cliente: \n");
+                listar_clientes();
+                scanf("%d", &id_cliente_venda);
+                resposta = buscar_cliente(id_cliente_venda);
+
+                if (resposta == 10) {
+                    printf("Cliente não encontrado! Por favor informe outro:\n");
+                }else {
+                    Vendas[i].id_cliente = id_cliente_venda;
+                    flag = false;
+                }
+
+            }while (flag);
+
+
             printf("Quantos produtos o cliente comprou? No máximo 10:\n");
             scanf("%d", &qtd_produtos_venda);
             printf("Esses são os produtos cadastrados\n");
             listar_produtos();
             int c = 0;
+
             while (c < qtd_produtos_venda) {
                 printf("Informe o id do %dº produto: \n", c + 1);
                 scanf("%d", &Vendas[i].Produtos_venda[c].id_produto);
                 printf("Informe a quantidade comprada do produto\n");
                 scanf("%d", &Vendas[i].Produtos_venda[c].quantidade);
                 c++;
-            }
-            break;
+            }            break;
         }
     }
 
