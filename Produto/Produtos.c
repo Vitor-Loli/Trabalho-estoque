@@ -18,6 +18,38 @@ int buscar_produto(int id) {
     return i;
 }
 
+float get_preco(int id) {
+    int i = 0;
+
+    while (Produtos[i].id != id) {
+        i++;
+        if (Produtos[i].id == id) {
+            return Produtos[i].preco;
+        }
+    }
+}
+
+float get_quantidade(int id) {
+    int i = 0;
+
+    while (Produtos[i].id != id) {
+        i++;
+        if (Produtos[i].id == id) {
+            return Produtos[i].quantidade;
+        }
+    }
+}
+
+void remover_estoque(int id, float qtd) {
+    int i = 0;
+    while (Produtos[i].id != id) {
+        i++;
+        if (Produtos[i].id == id) {
+            Produtos[i].quantidade = Produtos[i].quantidade - qtd;
+        }
+    }
+}
+
 void insere_produto(){
     int opc;
     for(int i = 0; i < 10; i++){

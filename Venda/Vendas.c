@@ -23,6 +23,7 @@ void efetuar_venda() {
     int id_produto_venda;
     int resposta;
     int qtd_produtos_venda;
+    int qtd_venda;
 
     if (qtd_cientes_cadastrados == 0 ) {
         printf("Não existem clientes cadastrados! Cadastre um primeiro!\n");
@@ -52,20 +53,57 @@ void efetuar_venda() {
 
             }while (flag);
 
+            do {
+                flag = true;
+                printf("Quantos produtos o cliente comprou? No máximo 10:\n");
+                scanf("%d", &qtd_produtos_venda);
 
-            printf("Quantos produtos o cliente comprou? No máximo 10:\n");
-            scanf("%d", &qtd_produtos_venda);
+                if (qtd_produtos_venda > 0 && qtd_produtos_venda <= 10) {
+                    flag = false;
+                }
+
+            }while (flag);
+
             printf("Esses são os produtos cadastrados\n");
             listar_produtos();
             int c = 0;
 
             while (c < qtd_produtos_venda) {
-                printf("Informe o id do %dº produto: \n", c + 1);
-                scanf("%d", &Vendas[i].Produtos_venda[c].id_produto);
-                printf("Informe a quantidade comprada do produto\n");
-                scanf("%d", &Vendas[i].Produtos_venda[c].quantidade);
+                do {
+                    flag = true;
+                    printf("Informe o id do %dº produto: \n", c + 1);
+                    scanf("%d", &id_produto_venda);
+                    resposta = buscar_produto(id_produto_venda);
+
+                    if (resposta == 10) {
+                        printf("Cliente não encontrado! Por favor informe outro:\n");
+                    }else {
+                        Vendas[i].Produtos_venda[c].id_produto = id_produto_venda;
+                        flag = false;
+                    }
+
+                } while (flag);
+
+                do {
+                    flag = true;
+                    resposta = get_quantidade(id_produto_venda);
+                    printf("Quantidade em estoque: %f\n", resposta);
+                    printf("Informe a quantidade comprada do produto\n");
+                    scanf("%d", &qtd_venda);
+
+                    if (qtd_venda > resposta || qtd_venda <= 0) {
+                        printf("Não há estoque ou o valor passado é invalido, por favor informe outro!\n");
+                    }else {
+                        Vendas[i].Produtos_venda[c].quantidade = qtd_venda;
+                        remover_estoque(id_produto_venda, qtd_produtos_venda);
+                        flag = false;
+                    }
+
+                }while (flag);
+
                 c++;
-            }            break;
+            }
+            break;
         }
     }
 
