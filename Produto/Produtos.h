@@ -18,8 +18,8 @@ extern produto Produtos[10];
 
 void insere_produto();
 int buscar_produto(int id);
-float get_quantidade(int id);
-float get_preco(int id);
+double get_quantidade(int id);
+double get_preco(int id);
 void remover_estoque(int id, float qtd);
 void listar_produtos();
 void excluir_produto();
