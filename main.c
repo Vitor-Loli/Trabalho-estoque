@@ -58,6 +58,9 @@ int main()
             listar_vendas();
             break;
          case 11:
+             relatorio();
+             break;
+         case 12:
              printf("Até logo!");
              break;
 
@@ -65,5 +68,5 @@ int main()
             printf("Valor incorreto! Por favor informe outro");
      }
 
-   }while(opc != 11);
+   }while(opc != 12);
 }

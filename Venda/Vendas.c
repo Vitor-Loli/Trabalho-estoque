@@ -13,10 +13,19 @@ typedef struct venda {
     int id_cliente;
     produto_venda Produtos_venda[10];
     float total;
+    char data_venda[17];
 } venda;
 struct venda Vendas[100];
 
 int id_venda = 0;
+
+void get_data(int index) {
+    static char buffer[17];
+    time_t agora = time(NULL);
+    struct tm *info = localtime(&agora);
+    strftime(buffer, sizeof(buffer), "%d/%m/%Y %H:%M", info);
+    strcpy(Vendas[index].data_venda, buffer);
+}
 
 void efetuar_venda() {
     int id_cliente_venda;
@@ -106,6 +115,7 @@ void efetuar_venda() {
             }
             break;
         }
+        get_data(i);
     }
 
     id_venda++;
@@ -116,6 +126,22 @@ void listar_vendas(){
         if(Vendas[i].id != 0){
             printf("%d - %d\n", Vendas[i].id, Vendas[i].id_cliente);
             printf("Produtos do cliente:\n");
+            for (int c = 0; c < 10; c++) {
+                if (Vendas[i].Produtos_venda[c].id_produto != 0) {
+                    printf("    %d - %d\n", Vendas[i].Produtos_venda[c].id_produto,Vendas[i].Produtos_venda[c].quantidade);
+                }
+            }
+        }
+    }
+}
+
+void relatorio(){
+    for (int i = 0; i < 100; i++) {
+        if(Vendas[i].id != 0){
+            printf("Relatório da venda: %d\n", Vendas[i].id);
+            printf("Data da venda: %s\n", Vendas[i].data_venda);
+            printf("Cliente: %s - %s", get_nome(Vendas[i].id_cliente), get_cpf(Vendas[i].id_cliente));
+            printf("Produtos comprados:\n");
             for (int c = 0; c < 10; c++) {
                 if (Vendas[i].Produtos_venda[c].id_produto != 0) {
                     printf("    %d - %d\n", Vendas[i].Produtos_venda[c].id_produto,Vendas[i].Produtos_venda[c].quantidade);
