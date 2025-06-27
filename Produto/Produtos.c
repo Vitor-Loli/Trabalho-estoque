@@ -115,9 +115,8 @@ void excluir_produto() {
         Produtos[i].preco = 0;
         Produtos[i].quantidade = 0;
         printf("Produto excluído com sucesso!\n");
+        qtd_produtos_cadastrados--;
     }
-
-    qtd_produtos_cadastrados--;
 
     printf("Deseja excluir outro cliente?\n");
     printf("1. Sim\n");

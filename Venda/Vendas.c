@@ -113,9 +113,9 @@ void efetuar_venda() {
 
                 c++;
             }
+            get_data(i);
             break;
         }
-        get_data(i);
     }
 
     id_venda++;
@@ -136,7 +136,7 @@ void listar_vendas(){
 }
 
 void relatorio(){
-    double total;
+
     for (int i = 0; i < 100; i++) {
         if(Vendas[i].id != 0){
             printf("Relatório da venda: %d\n", Vendas[i].id);
@@ -144,12 +144,15 @@ void relatorio(){
             printf("Cliente: %s - %s\n", Clientes[get_nome((Vendas[i].id_cliente))].nome, Clientes[get_cpf(Vendas[i].id_cliente)].cpf );
             printf("Produtos comprados:\n");
             for (int c = 0; c < 10; c++) {
+                double total = 0;
+                double preco = 0;
                 if (Vendas[i].Produtos_venda[c].id_produto != 0) {
-                    total = total + (Vendas[i].Produtos_venda[c].quantidade * get_preco(Vendas[i].Produtos_venda[c].id_produto));
-                    printf("  %s - %d - R$%.2lf - R$%.2lf\n", Produtos[get_descricao(Vendas[i].Produtos_venda[c].id_produto)].descricao , Vendas[i].Produtos_venda[c].quantidade, get_preco(Vendas[i].Produtos_venda[c].id_produto), total);
+                    preco = Vendas[i].Produtos_venda[c].quantidade * get_preco(Vendas[i].Produtos_venda[c].id_produto);
+                    total = total + preco;
+                    printf("  %s - %d - R$%.2lf - R$%.2lf\n", Produtos[get_descricao(Vendas[i].Produtos_venda[c].id_produto)].descricao , Vendas[i].Produtos_venda[c].quantidade, get_preco(Vendas[i].Produtos_venda[c].id_produto), preco);
                 }
             }
-            printf("  Total: RS%.2lf", total);
+            printf("  Total: RS%.2lf\n\n", total);
         }
     }
 }

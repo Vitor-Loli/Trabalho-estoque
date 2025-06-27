@@ -98,9 +98,8 @@ void excluir_cliente(){
         strcpy(Clientes[i].nome, "");
         strcpy(Clientes[i].cpf, "");
         printf("Cliente excluído com sucesso!\n");
+        qtd_cientes_cadastrados--;
     }
-
-    qtd_cientes_cadastrados--;
 
     printf("Deseja excluir outro cliente?\n");
     printf("1. Sim\n");
