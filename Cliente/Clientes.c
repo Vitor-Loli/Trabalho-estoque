@@ -43,18 +43,18 @@ int buscar_cliente(int id) {
     return i;
 }
 
-char get_nome(int id) {
+int get_nome(int id) {
     for (int i = 0; i < qtd_cientes_cadastrados; i++) {
         if (Clientes[i].id == id) {
-            return Clientes[i].nome;
+            return i;
         }
     }
 }
 
-char get_cpf(int id) {
+int get_cpf(int id) {
     for (int i = 0; i < qtd_cientes_cadastrados; i++) {
         if (Clientes[i].id == id) {
-            return Clientes[i].cpf;
+            return i;
         }
     }
 }

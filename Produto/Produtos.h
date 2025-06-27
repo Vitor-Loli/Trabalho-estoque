@@ -20,6 +20,7 @@ void insere_produto();
 int buscar_produto(int id);
 double get_quantidade(int id);
 double get_preco(int id);
+int get_descricao(int id);
 void remover_estoque(int id, float qtd);
 void listar_produtos();
 void excluir_produto();

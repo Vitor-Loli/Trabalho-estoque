@@ -20,7 +20,7 @@ int buscar_cliente(int id);
 void listar_clientes();
 void excluir_cliente();
 void atualizar_cliente();
-char get_nome(int id);
-char get_cpf(int id);
+int get_nome(int id);
+int get_cpf(int id);
 
 #endif //CLIENTES_H

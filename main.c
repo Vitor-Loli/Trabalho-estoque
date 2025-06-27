@@ -24,6 +24,9 @@ int main()
        printf("8. Alterar Produto\n");
        printf("Vendas\n");
        printf("9. Efetuar Venda\n");
+       printf("10. Listar Vendas\n");
+       printf("11. Relatório Vendas\n");
+       printf("\n12. Sair\n");
        scanf("%d", &opc);
 
      switch(opc){

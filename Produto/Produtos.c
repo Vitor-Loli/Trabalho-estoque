@@ -18,6 +18,14 @@ int buscar_produto(int id) {
     return i;
 }
 
+int get_descricao(int id) {
+    for (int i = 0; i < qtd_produtos_cadastrados; i++) {
+        if (Produtos[i].id == id) {
+            return i;
+        }
+    }
+}
+
 double get_preco(int id) {
     for (int i = 0; i < qtd_produtos_cadastrados; i++) {
         if (Produtos[i].id == id) {

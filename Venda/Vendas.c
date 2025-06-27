@@ -136,17 +136,20 @@ void listar_vendas(){
 }
 
 void relatorio(){
+    double total;
     for (int i = 0; i < 100; i++) {
         if(Vendas[i].id != 0){
             printf("Relatório da venda: %d\n", Vendas[i].id);
             printf("Data da venda: %s\n", Vendas[i].data_venda);
-            printf("Cliente: %s - %s", get_nome(Vendas[i].id_cliente), get_cpf(Vendas[i].id_cliente));
+            printf("Cliente: %s - %s\n", Clientes[get_nome((Vendas[i].id_cliente))].nome, Clientes[get_cpf(Vendas[i].id_cliente)].cpf );
             printf("Produtos comprados:\n");
             for (int c = 0; c < 10; c++) {
                 if (Vendas[i].Produtos_venda[c].id_produto != 0) {
-                    printf("    %d - %d\n", Vendas[i].Produtos_venda[c].id_produto,Vendas[i].Produtos_venda[c].quantidade);
+                    total = total + (Vendas[i].Produtos_venda[c].quantidade * get_preco(Vendas[i].Produtos_venda[c].id_produto));
+                    printf("  %s - %d - R$%.2lf - R$%.2lf\n", Produtos[get_descricao(Vendas[i].Produtos_venda[c].id_produto)].descricao , Vendas[i].Produtos_venda[c].quantidade, get_preco(Vendas[i].Produtos_venda[c].id_produto), total);
                 }
             }
+            printf("  Total: RS%.2lf", total);
         }
     }
 }
